@@ -21,8 +21,14 @@ def process_request():
     else:
         print("Queue is empty")
 
+active = True
 
-while True:
-    generate_request()
-    process_request()
-    time.sleep(3)
+while active:
+    try:
+        generate_request()
+        process_request()
+        time.sleep(3)
+
+    except KeyboardInterrupt:
+        print('Programm is closed.')
+        active = False
